@@ -16,4 +16,15 @@ export type CombineElementProps<E extends ElementType, P = unknown> = Combine<
 export type OverridableProps<E extends ElementType, P = unknown> = {
   as?: E;
 } & CombineElementProps<E, P>;
-export {};
+
+declare type Join<K, P> = K extends string | number
+  ? P extends string | number
+    ? `${K}${"" extends P ? "" : "."}${P}`
+    : never
+  : never;
+
+export declare type Leaves<T> = T extends object
+  ? {
+      [K in keyof T]-?: Join<K, Leaves<T[K]>>;
+    }[keyof T]
+  : "";

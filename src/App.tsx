@@ -1,28 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Flex } from "./components/Atoms";
+import { injectGlobal } from "@emotion/css";
+import colors from "./constants/colors";
+import Routes from "./Routes";
+
+injectGlobal`
+  body {
+    background: ${colors.gray[100]};
+    margin: 0;
+  }
+
+  * {
+    font-family: Pretendard;
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #37485D !important;
+  }
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Flex mx={4} py={12}>
-          TEST
-        </Flex>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes />
     </div>
   );
 }

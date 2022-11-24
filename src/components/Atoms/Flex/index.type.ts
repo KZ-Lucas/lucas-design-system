@@ -1,6 +1,6 @@
 import type { CSSProperties, ElementType } from "react";
-import type { OverridableProps } from "@/utils/type";
 import { SpacingLayout } from "@/types/emotion";
+import { OverridableProps } from "@/utils/type";
 
 type FlexBaseProps = {
   display?: "inline-flex" | "flex";
