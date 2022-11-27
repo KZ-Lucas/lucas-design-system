@@ -1,7 +1,10 @@
-import { Flex } from "@/components/Atoms";
-import { FlexProps } from "../Flex/index.type";
+import { Flex } from '@/components/Atoms';
 
-type BodyProps = React.PropsWithChildren<FlexProps>;
+import type { FlexProps } from '../Flex/index.type';
+
+type BodyProps = FlexProps & {
+  children: JSX.Element | JSX.Element[];
+};
 
 const Body = (props: BodyProps) => {
   const { children, ...rest } = props;

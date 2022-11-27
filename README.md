@@ -7,3 +7,12 @@
 ### SidebarLayout
 
 - [x] - 내부 이벤트에 대한 이팩트 핸들링이 가능해야 합니다.
+
+
+<SidebarLayout>
+  <SidebarLayout.Nav>
+    
+  </SidebarLayout.Nav>
+
+  <SidebarLayout.Content />
+</SidebarLayout>

@@ -1,24 +1,25 @@
-import { cx } from "@emotion/css";
+import { cx } from '@emotion/css';
 
-import { textDefaultStyle } from "./index.style";
+import { getColor } from '@/utils/emotion';
 
-import type { ElementType } from "react";
-import { TextProps } from "./index.type";
-import { DEFAULT_ELEMENT, FontSize, LineHeight } from "./index.const";
-import { getColor } from "@/utils/emotion";
+import { DEFAULT_ELEMENT, FontSize, LineHeight } from './index.const';
+import { textDefaultStyle } from './index.style';
+
+import type { ElementType } from 'react';
+import type { TextProps } from './index.type';
 
 const Text = <T extends ElementType>(props: TextProps<T>) => {
   const {
     weight,
     size: customSize,
     lineHeight: customLineHeight,
-    color = "black",
+    color = 'black',
     align,
     className,
     as,
     strike,
     children,
-    typography = "medium",
+    typography = 'medium',
     ...rest
   } = props;
 

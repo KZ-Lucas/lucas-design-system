@@ -1,5 +1,6 @@
-import { Flex } from "@/components/Atoms";
-import { FlexProps } from "../Flex/index.type";
+import { Flex } from '@/components/Atoms';
+
+import type { FlexProps } from '../Flex/index.type';
 
 type FooterProps = React.PropsWithChildren<FlexProps>;
 

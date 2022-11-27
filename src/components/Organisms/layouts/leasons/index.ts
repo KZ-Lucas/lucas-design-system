@@ -1,17 +1,18 @@
-import constate from "constate";
-import useLeasons from "@/hooks/useLeasons";
-import { compoundLayoutBuilder } from "@/utils/builder";
-import { BodyStyle, FooterStyle, HeaderStyle } from "./index.style";
+import constate from 'constate';
 
-export const [LeasonsProvider, useLeasonsApi] = constate(
-  useLeasons,
-  (value) => value.api
-);
+import { compoundBuilder } from '@/utils/builder';
 
-const LeasonsLayout = compoundLayoutBuilder(LeasonsProvider, {
-  Header: HeaderStyle,
-  Body: BodyStyle,
-  Footer: FooterStyle,
+import useLeasons from './index.hook';
+import { LeasonsBody, LeasonsFooter, LeasonsHeader } from './index.style';
+
+export const [LeasonsProvider, useLeasonsApi] = constate(useLeasons, (value) => value.api);
+
+const LeasonsLayout = compoundBuilder(LeasonsProvider, {
+  compound: {
+    Header: LeasonsHeader,
+    Body: LeasonsBody,
+    Footer: LeasonsFooter,
+  },
 });
 
 export default LeasonsLayout;

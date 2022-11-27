@@ -1,18 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import { ThemeProvider } from '@emotion/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+import App from './App';
+import colors from './constants/colors';
+import reportWebVitals from './reportWebVitals';
+
+import type { Theme } from '@emotion/react';
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+const queryClient = new QueryClient();
+
+export const theme: Theme = {
+  colors,
+};
+
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

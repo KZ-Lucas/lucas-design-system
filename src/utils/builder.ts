@@ -1,33 +1,24 @@
-import { Header, Body, Footer } from "@/components/Atoms/Layout";
-import { cx } from "@emotion/css";
-import React from "react";
+import type React from 'react';
 
-const LayoutPart = {
-  Header,
-  Body,
-  Footer,
-};
-
-type OverrideStyleOption = {
-  [key in keyof typeof LayoutPart]?: string;
-};
-
-export const compoundLayoutBuilder = <T>(
-  LayoutComponent: React.FC<T>,
-  styleOption: OverrideStyleOption
+export const compoundBuilder = <
+  LayoutComponentType,
+  CompoundComponentType extends Record<
+    string,
+    (React.FC<LayoutComponentType> & CompoundComponentType)[keyof CompoundComponentType]
+  >,
+>(
+  LayoutComponent: React.FC<LayoutComponentType>,
+  CompoundComponent: {
+    compound?: CompoundComponentType;
+  },
 ) => {
-  const _layout = LayoutComponent as typeof LayoutComponent & typeof LayoutPart;
+  const _layout = LayoutComponent as typeof LayoutComponent & CompoundComponentType;
 
-  Object.entries(LayoutPart).forEach(([layoutName, layoutComponent]) => {
-    _layout[layoutName as keyof typeof LayoutPart] = ({ className, ...rest }) =>
-      layoutComponent({
-        className: cx(
-          styleOption[layoutName as keyof typeof LayoutPart],
-          className
-        ),
-        ...rest,
-      });
-  });
+  if (CompoundComponent.compound) {
+    Object.entries(CompoundComponent.compound).forEach(([layoutName, layoutComponent]) => {
+      _layout[layoutName as keyof CompoundComponentType] = layoutComponent;
+    });
+  }
 
   return _layout;
 };

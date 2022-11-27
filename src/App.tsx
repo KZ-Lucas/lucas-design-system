@@ -1,6 +1,7 @@
-import { injectGlobal } from "@emotion/css";
-import colors from "./constants/colors";
-import Routes from "./Routes";
+import { injectGlobal } from '@emotion/css';
+
+import colors from './constants/colors';
+import Routes from './Routes';
 
 injectGlobal`
   body {

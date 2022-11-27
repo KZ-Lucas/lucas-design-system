@@ -1,5 +1,6 @@
-import { css } from "@emotion/css";
-import { TextProps } from "./index.type";
+import { css } from '@emotion/css';
+
+import type { TextProps } from './index.type';
 
 export const textDefaultStyle = (props: TextProps<any>) => css`
   font-weight: ${props.weight};
@@ -8,5 +9,5 @@ export const textDefaultStyle = (props: TextProps<any>) => css`
   text-align: ${props.align};
   line-height: ${props.lineHeight};
   margin: 0;
-  text-decoration: ${props.strike ? "line-through" : "auto"};
+  text-decoration: ${props.strike ? 'line-through' : 'auto'};
 `;

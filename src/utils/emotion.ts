@@ -1,6 +1,8 @@
-import colors from "@/constants/colors";
-import { IColorType, MarginSpacing, PaddingSpacing } from "@/types/emotion";
-import _get from "lodash/get";
+import _get from 'lodash/get';
+
+import colors from '@/constants/colors';
+
+import type { IColorType, MarginSpacing, PaddingSpacing } from '@/types/emotion';
 
 const MULTIPLE = 4;
 
@@ -11,13 +13,13 @@ export const marginSpacingStyle = (props: MarginSpacing): string => {
 
   return margins
     .reduce<string[]>((arr, [position, value]) => {
-      if (typeof value === "number") {
+      if (typeof value === 'number') {
         arr.push(`margin-${position}: ${(value ?? 0) * MULTIPLE}px`);
       }
 
       return arr;
     }, [])
-    .join(";");
+    .join(';');
 };
 
 export const paddingSpacingStyle = (props: PaddingSpacing): string => {
@@ -26,11 +28,9 @@ export const paddingSpacingStyle = (props: PaddingSpacing): string => {
   const paddings = Object.entries({ top: pt, bottom: pb, left: pl, right: pr });
 
   return paddings
-    .filter(([_position, value]) => typeof value === "number")
-    .map(
-      ([position, value]) => `padding-${position}: ${(value ?? 0) * MULTIPLE}px`
-    )
-    .join(";");
+    .filter(([_position, value]) => typeof value === 'number')
+    .map(([position, value]) => `padding-${position}: ${(value ?? 0) * MULTIPLE}px`)
+    .join(';');
 };
 
 export const getColor = (colorType: IColorType) => {
