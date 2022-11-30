@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 
 import { getColor, marginSpacingStyle, paddingSpacingStyle } from '@/utils/emotion';
 
+import { DEFAULT_TYPOGRAPHY_ELEMENT } from '../Typography/index.const';
+
 import type { ButtonProps } from './index.type';
 
 export const ButtonBase = styled.button<ButtonProps>`
@@ -26,6 +28,10 @@ export const ButtonBase = styled.button<ButtonProps>`
         background-color: rgba(25, 118, 210, 0.04);
       }
     `};
+
+  ${DEFAULT_TYPOGRAPHY_ELEMENT} {
+    white-space: nowrap;
+  }
 
   ${marginSpacingStyle};
   ${paddingSpacingStyle};

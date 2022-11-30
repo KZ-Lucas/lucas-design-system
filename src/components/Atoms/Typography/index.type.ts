@@ -1,7 +1,7 @@
 import type { CSSProperties, ElementType } from 'react';
 import type { IColorType, TypographySize, TypographyWeight } from '@/types/emotion';
 import type { OverridableProps } from '@/utils/type';
-import type { DEFAULT_ELEMENT } from './index.const';
+import type { DEFAULT_TYPOGRAPHY_ELEMENT } from './index.const';
 
 export type TextBaseProps = {
   weight?: TypographyWeight;
@@ -12,7 +12,7 @@ export type TextBaseProps = {
   strike?: boolean;
 };
 
-export type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProps<
+export type TextProps<T extends ElementType = typeof DEFAULT_TYPOGRAPHY_ELEMENT> = OverridableProps<
   T,
   TextBaseProps
 >;

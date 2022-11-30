@@ -1,1 +1,1 @@
-export const DEFAULT_ELEMENT = 'span';
+export const DEFAULT_TYPOGRAPHY_ELEMENT = 'span';
