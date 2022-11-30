@@ -1,10 +1,10 @@
 export const RoutePage = {
   root: {
-    /** 투두 목록 페이지 */
-    leasons: '/leasons',
-    /** 투두 추가 페이지 */
+    /** 시작 페이지 */
     prepare: '/prepare',
-    /** 투두 수정 페이지 */
-    edit: '/todo/edit',
+    /** 문제 페이지 */
+    leasons: '/leasons',
+    /** 결과 페이지 */
+    result: '/result',
   },
 } as const;

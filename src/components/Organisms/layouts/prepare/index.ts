@@ -5,11 +5,7 @@ import { compoundBuilder } from '@/utils/builder';
 import usePrepare from './index.hook';
 import { PrepareBody } from './index.style';
 
-export const [PrepareProvider, useNextHandler, useIsFetchLoading] = constate(
-  usePrepare,
-  (value) => value.handleNextPress,
-  (value) => value.isLoading,
-);
+export const [PrepareProvider] = constate(usePrepare);
 
 const PrepareLayout = compoundBuilder(PrepareProvider, {
   compound: {

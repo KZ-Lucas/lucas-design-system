@@ -1,8 +1,16 @@
 import _get from 'lodash/get';
 
-import colors from '@/constants/colors';
+import colors from '@/constants/themeAssets/colors';
 
-import type { IColorType, MarginSpacing, PaddingSpacing } from '@/types/emotion';
+import type {
+  CreateTypographyParams,
+  CreateTypographyTokenParams,
+  IColorType,
+  MarginSpacing,
+  PaddingSpacing,
+  Typography,
+  TypographyWeight,
+} from '@/types/emotion';
 
 const MULTIPLE = 4;
 
@@ -35,4 +43,40 @@ export const paddingSpacingStyle = (props: PaddingSpacing): string => {
 
 export const getColor = (colorType: IColorType) => {
   return _get(colors, colorType);
+};
+
+export const createTypographyToken = (params: CreateTypographyTokenParams) => {
+  return {
+    fontSize: `${params.fontSize}px`,
+    fontWeight: params.fontWeight,
+    lineHeight: `${params.lineHeight}px`,
+  };
+};
+
+export const createTypography = ({
+  fontSize,
+  lineHeight,
+}: CreateTypographyParams): Record<TypographyWeight, Typography> => {
+  return {
+    light: createTypographyToken({
+      fontSize,
+      fontWeight: 'light',
+      lineHeight,
+    }),
+    regular: createTypographyToken({
+      fontSize,
+      fontWeight: 'normal',
+      lineHeight,
+    }),
+    bold: createTypographyToken({
+      fontSize,
+      fontWeight: 'bold',
+      lineHeight,
+    }),
+    semiBold: createTypographyToken({
+      fontSize,
+      fontWeight: 600,
+      lineHeight,
+    }),
+  };
 };

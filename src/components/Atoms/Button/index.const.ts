@@ -1,79 +1,97 @@
 import type { ButtonSize, ButtonStyle, ButtonVariant } from './index.type';
 
-const buttonSizes: Record<ButtonVariant, Record<ButtonSize, ButtonStyle>> = {
+const BUTTON_SIZES: Record<ButtonVariant, Record<ButtonSize, ButtonStyle>> = {
   default: {
-    large: {
-      height: '44px',
-      fontSize: '16px',
+    xl: {
+      height: '56px',
+      fontSize: 'xl',
       px: 4,
     },
-    medium: {
+    lg: {
+      height: '44px',
+      fontSize: 'lg',
+      px: 4,
+    },
+    md: {
       height: '40px',
-      fontSize: '13px',
+      fontSize: 'md',
       px: 3,
     },
-    small: {
+    sm: {
       height: '32px',
-      fontSize: '13px',
+      fontSize: 'md',
       px: 2.5,
     },
-    tiny: {
+    xs: {
       height: '28px',
-      fontSize: '13px',
+      fontSize: 'md',
       px: 2,
     },
   },
   pill: {
-    large: {
-      height: '44px',
+    xl: {
+      height: '56px',
       border: 0,
-      fontSize: '16px',
+      fontSize: 'xl',
       bgColor: 'transparent',
       px: 4,
     },
-    medium: {
+    lg: {
+      height: '44px',
+      border: 0,
+      fontSize: 'lg',
+      bgColor: 'transparent',
+      px: 4,
+    },
+    md: {
       height: '40px',
       border: 0,
-      fontSize: '13px',
+      fontSize: 'md',
       bgColor: 'transparent',
       px: 3,
     },
-    small: {
+    sm: {
       height: '32px',
       border: 0,
-      fontSize: '13px',
+      fontSize: 'md',
       bgColor: 'transparent',
       px: 2.5,
     },
-    tiny: {
+    xs: {
       height: '28px',
       border: 0,
-      fontSize: '13px',
+      fontSize: 'md',
       bgColor: 'transparent',
       px: 2,
     },
   },
   text: {
-    large: {
-      fontSize: '15px',
+    xl: {
+      fontSize: 'md',
       border: 0,
       bgColor: 'transparent',
       px: 0,
     },
-    medium: {
-      fontSize: '15px',
+    lg: {
+      fontSize: 'md',
       border: 0,
       bgColor: 'transparent',
       px: 0,
     },
-    small: {
-      fontSize: '15px',
+    md: {
+      fontSize: 'md',
       border: 0,
       bgColor: 'transparent',
       px: 0,
     },
-    tiny: {
-      fontSize: '15px',
+    sm: {
+      fontSize: 'md',
+      border: 0,
+      bgColor: 'transparent',
+      px: 0,
+    },
+    xs: {
+      fontSize: 'md',
       border: 0,
       bgColor: 'transparent',
       px: 0,
@@ -81,4 +99,4 @@ const buttonSizes: Record<ButtonVariant, Record<ButtonSize, ButtonStyle>> = {
   },
 };
 
-export default buttonSizes;
+export default BUTTON_SIZES;

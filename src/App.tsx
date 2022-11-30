@@ -1,6 +1,6 @@
 import { injectGlobal } from '@emotion/css';
 
-import colors from './constants/colors';
+import colors from './constants/themeAssets/colors';
 import Routes from './Routes';
 
 injectGlobal`

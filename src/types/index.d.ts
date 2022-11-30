@@ -1,9 +1,8 @@
 import '@emotion/react';
 
-import type colors from '@/constants/colors';
+import type { Theme as AppTheme } from '@/types/emotion';
 
 declare module '@emotion/react' {
-  export interface Theme {
-    colors: typeof colors;
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface Theme extends AppTheme {}
 }

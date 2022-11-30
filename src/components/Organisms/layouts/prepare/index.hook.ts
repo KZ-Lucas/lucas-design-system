@@ -1,21 +1,13 @@
-import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-import { RoutePage } from '@/constants/routes';
-import useLeasons from '@/hooks/@features/useLeasons';
+import useLeasonStore from '@/store/@features/leason';
 
 const usePrepare = () => {
-  const { data: leasonList, isLoading } = useLeasons();
-  const navigate = useNavigate();
+  useEffect(() => {
+    useLeasonStore.persist.clearStorage();
+  }, []);
 
-  const handleNextPress = useCallback(() => {
-    navigate(RoutePage.root.leasons);
-  }, [navigate]);
-
-  return {
-    handleNextPress,
-    isLoading,
-  };
+  return {};
 };
 
 export default usePrepare;

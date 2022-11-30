@@ -1,16 +1,49 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type LeasonsHookParams = {
-  onSubmit: () => void;
-};
+import { RoutePage } from '@/constants/routes';
+import useLeasonStore from '@/store/@features/leason';
 
-const useLeasons = (params: LeasonsHookParams) => {
-  const { onSubmit } = params;
+import type { LeasonType } from '@/types/leason';
 
-  const memoizedApiObj = useMemo(() => ({ onSubmit }), [onSubmit]);
+const useLeasons = () => {
+  const { leasonList, nextStep, sequence, submitUserAnswer, resultList, fetchLeasonList } =
+    useLeasonStore();
+  const navigate = useNavigate();
+
+  const currentLeason = useMemo<LeasonType | undefined>(
+    () => leasonList[sequence],
+    [leasonList, sequence],
+  );
+
+  const currentCorrectStatus = useMemo(
+    () => resultList?.[currentLeason?.id!],
+    [resultList, currentLeason?.id],
+  );
+
+  const handleSubmitAnswer = useCallback(
+    (answer: string) => {
+      if (currentLeason) {
+        submitUserAnswer(currentLeason.id, answer);
+      }
+    },
+    [currentLeason, submitUserAnswer],
+  );
+
+  const handleNextStep = useCallback(() => {
+    if (nextStep() === 10) {
+      navigate(RoutePage.root.result);
+    }
+  }, [navigate, nextStep]);
 
   return {
-    api: memoizedApiObj,
+    currentLeason,
+    handleNextStep,
+    leasonList,
+    fetchLeasonList,
+    sequence,
+    currentCorrectStatus,
+    handleSubmitAnswer,
   };
 };
 

@@ -1,17 +1,28 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type LeasonsHookParams = {
-  onSubmit: () => void;
-};
+import { RoutePage } from '@/constants/routes';
+import useLeasonStore from '@/store/@features/leason';
 
-const useLeasons = (params: LeasonsHookParams) => {
-  const { onSubmit } = params;
+import type { LeasonType } from '@/types/leason';
 
-  const memoizedApiObj = useMemo(() => ({ onSubmit }), [onSubmit]);
+const useLeasons = () => {
+  const { leasonList, sequence } = useLeasonStore();
+  const navigate = useNavigate();
 
-  return {
-    api: memoizedApiObj,
-  };
+  const currentLeason = useMemo<LeasonType | undefined>(
+    () => leasonList[sequence],
+    [leasonList, sequence],
+  );
+
+  /** 질문 데이터가 없을 경우 시작 페이지으로 이동 */
+  useEffect(() => {
+    if (!currentLeason) {
+      navigate(RoutePage.root.prepare);
+    }
+  }, [currentLeason, navigate]);
+
+  return {};
 };
 
 export default useLeasons;

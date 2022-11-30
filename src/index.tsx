@@ -1,33 +1,30 @@
 import React from 'react';
-import { ThemeProvider } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
-import colors from './constants/colors';
+import CommonProvider from './components/Providers/CommonProvider';
+import { ThemeProvider } from './components/Providers/ThemeProvider';
 import reportWebVitals from './reportWebVitals';
-
-import type { Theme } from '@emotion/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 const queryClient = new QueryClient();
 
-export const theme: Theme = {
-  colors,
-};
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <Router>
-          <App />
+          <CommonProvider>
+            <App />
+          </CommonProvider>
         </Router>
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
 );

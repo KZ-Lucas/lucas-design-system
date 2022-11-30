@@ -1,11 +1,11 @@
 import type { ComponentProps, CSSProperties } from 'react';
-import type { IColorType, SpacingLayout } from '@/types/emotion';
-import type { TextBaseProps } from '../Text/index.type';
+import type { TextBaseProps } from '@/components/Atoms/Typography/index.type';
+import type { IColorType, SpacingLayout, TypographySize } from '@/types/emotion';
 
-export type ButtonSize = 'small' | 'medium' | 'large' | 'tiny';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type ButtonStyle = {
   height?: string;
-  fontSize?: string;
+  fontSize?: TypographySize;
   bgColor?: IColorType;
   border?: CSSProperties['border'];
 } & SpacingLayout;
@@ -13,8 +13,9 @@ export type ButtonStyle = {
 export type ButtonVariant = 'pill' | 'text' | 'default';
 
 export type ButtonProps = {
-  size: 'small' | 'medium' | 'large' | 'tiny';
+  size: ButtonSize;
   variant?: ButtonVariant;
   _text?: TextBaseProps;
+  fullWidth?: boolean;
 } & ComponentProps<'button'> &
   ButtonStyle;

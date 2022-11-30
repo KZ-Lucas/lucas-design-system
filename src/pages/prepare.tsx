@@ -1,20 +1,20 @@
-import { Flex, Text } from '@/components/Atoms';
-import PrepareNextButton from '@/components/Organisms/components/prepare/PrepareNextButton';
+import { Flex, Typography } from '@/components/Atoms';
 import PrepareLayout from '@/components/Organisms/layouts/prepare';
+import PreparePlaySection from '@/components/Organisms/sections/prepare/PreparePlaySection';
 
 const Prepare = () => {
   return (
     <PrepareLayout>
       <PrepareLayout.Body direction="column" align="center" justify="center">
-        <Text typography="5xlarge" color="orange.400">
+        <Typography size="5xl" color="orange.400">
           Music
-        </Text>
-        <Text typography="5xlarge" color="white">
+        </Typography>
+        <Typography size="5xl" color="white">
           랜덤 퀴즈
-        </Text>
+        </Typography>
 
-        <Flex mt={6}>
-          <PrepareNextButton>퀴즈 풀기</PrepareNextButton>
+        <Flex mt={12}>
+          <PreparePlaySection />
         </Flex>
       </PrepareLayout.Body>
     </PrepareLayout>
